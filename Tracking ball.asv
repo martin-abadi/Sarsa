@@ -1,0 +1,28 @@
+
+myVideo = VideoReader('MOV01C.MOD');
+x=cell([],1);
+get(myVideo)
+global frameNum;
+global rgb_f;
+global hsv_f;
+%global clean_frame;
+frameNum=0;
+
+while hasFrame(myVideo) %count the frame and init arrays from all kind. good night
+              frameNum = frameNum + 1;
+              rgb_f{frameNum}= readFrame(myVideo);
+              img=rgb_f{frameNum};
+              hsv_f = toHSV(; 
+              %imshow(hsv_img);
+              %imshow(clean_frame(rgb_f{frameNum}));    
+end
+
+function y= toHSV(x)
+y=zeros(x.size);
+    for r = 1:x.size
+           y{r}=rgb2hsv(x{r});
+    end
+end
+
+
+imshow (hsv_img);
